@@ -1,8 +1,9 @@
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
+import 'book_list_view.dart';
+import 'customAppBar.dart';
+import 'custom_list_View_Item.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -12,35 +13,13 @@ class HomeViewBody extends StatelessWidget {
     return const Column(
       children:[
         CustomAppBar(),
+        FeaturedBooksListView(),
       ],
     );
   }
 }
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 40),
-      child: Row(
-        children: [
-          Text('B O O K L Y',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
 
-          ),
-          ),
-          Spacer(),
-          IconButton(onPressed: (){},
-              icon:const Icon(
-            Icons.search,
-                size: 36,
-          ))
-        ],
-      ),
-    );
-  }
-}
+
+

@@ -1,3 +1,4 @@
+import 'package:bookly/Features/home/persentation/views/widgets/custom_list_View_Item.dart';
 import 'package:bookly/Features/splash/presentation/views/SplachView.dart';
 import 'package:bookly/constants.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart.';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(const BooklyApp());
+  runApp(const BooklyApp()); 
 }
 
 class BooklyApp extends StatelessWidget {
