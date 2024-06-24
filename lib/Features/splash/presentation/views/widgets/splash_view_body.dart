@@ -1,7 +1,10 @@
 
 
+import 'package:bookly/Features/home/persentation/views/home_view.dart';
+import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -18,6 +21,19 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   @override
   void initState() {
     super.initState();
+    animationControllerBuilder();
+//page tzhar f 2 seconds and then navigate to homepage
+    navigateToHome();
+  }
+
+  void navigateToHome() {
+     Future.delayed(const Duration(seconds: 2), (){
+      Get.to(()=> const
+      HomeView(), transition: Transition.fade, duration: kTransitionDuration);
+    });
+  }
+
+  void animationControllerBuilder() {
     animationController = AnimationController(
         vsync: this,
         duration: const Duration(seconds: 100)
@@ -26,7 +42,6 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
         Tween<Offset>(begin: Offset(0, 2), end: Offset.zero).animate(
             animationController);
     animationController.forward();
-
   }
 
   @override
@@ -43,8 +58,6 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       children: [
         Image.asset(AssetsData.logo),
         buildAnimatedBuilder(),
-
-
       ],
     );
   }
@@ -56,7 +69,6 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
           return
           SlideTransition(
             position: slidingAnimation,
-
             child: const Text('Read free books',
               textAlign: TextAlign.center,
             ),
