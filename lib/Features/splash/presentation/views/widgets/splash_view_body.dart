@@ -56,7 +56,12 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(AssetsData.logo),
+        const Text('B O O K L Y',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         buildAnimatedBuilder(),
       ],
     );
