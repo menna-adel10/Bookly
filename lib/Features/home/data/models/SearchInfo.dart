@@ -1,4 +1,4 @@
-/// textSnippet : "New to this edition: An extended section on Rust macros, an expanded chapter on modules, and appendixes on Rust development tools and editions."
+/// textSnippet : "Updated with the latest version of Python, the new Third Edition offers a thorough overview of multiple applied areas, including image processing, cryptography, astronomy, the Internet, and bioinformatics."
 
 class SearchInfo {
   SearchInfo({

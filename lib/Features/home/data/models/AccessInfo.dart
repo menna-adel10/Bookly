@@ -6,9 +6,9 @@ import 'Pdf.dart';
 /// embeddable : true
 /// publicDomain : false
 /// textToSpeechPermission : "ALLOWED"
-/// epub : {"isAvailable":true}
-/// pdf : {"isAvailable":false}
-/// webReaderLink : "http://play.google.com/books/reader?id=qAOhDwAAQBAJ&hl=&source=gbs_api"
+/// epub : {"isAvailable":false}
+/// pdf : {"isAvailable":true,"acsTokenLink":"http://books.google.com/books/download/Python_Programming_in_Context-sample-pdf.acsm?id=b-2oDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"}
+/// webReaderLink : "http://play.google.com/books/reader?id=b-2oDwAAQBAJ&hl=&source=gbs_api"
 /// accessViewStatus : "SAMPLE"
 /// quoteSharingAllowed : false
 

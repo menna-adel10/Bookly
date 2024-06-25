@@ -1,4 +1,4 @@
-/// isAvailable : true
+/// isAvailable : false
 
 class Epub {
   Epub({

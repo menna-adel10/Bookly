@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^5.0.0
   font_awesome_flutter: ^10.7.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
