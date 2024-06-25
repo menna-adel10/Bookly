@@ -1,7 +1,9 @@
 import 'package:bookly/Features/home/data/models/BookModel.dart';
+import 'package:dartz/dartz.dart';
 
+import '../../../../core/errors/failures.dart';
 abstract class HomeRepo{
-  Future<List<BookModel>>fetchBestSellerBooks();
-  Future<List<BookModel>>fetchFeaturedBooks();
+  Future<Either<Failure,List<BookModel>>>fetchBestSellerBooks();
+  Future<Either<Failure,List<BookModel>>>fetchFeaturedBooks();
 
 }
