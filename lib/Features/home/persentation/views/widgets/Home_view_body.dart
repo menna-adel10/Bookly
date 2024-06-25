@@ -24,9 +24,10 @@ class HomeViewBody extends StatelessWidget {
             padding: EdgeInsets.only(left: 8.0),
             child: Text(
               'Best Seller',
-              style: Styles.tittleMedium,
+              style: Styles.tittleMedium18,
             ),
-          )
+          ),
+          BestSellerList(),
         ],
       ),
     );
@@ -40,24 +41,42 @@ class BestSellerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 120,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.8 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                image: const DecorationImage(
-                    image: AssetImage(
-                  AssetsData.testImage,
-                )),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0, top: 10),
+        child: Row(
+          children: [
+            AspectRatio(
+              aspectRatio: 2.8 / 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: const DecorationImage(
+                      image: AssetImage(
+                    AssetsData.testImage,
+                  )),
+                ),
               ),
             ),
-          ),
-          const Column(
-            children: [],
-          )
-        ],
+            const Expanded(
+              child:  Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Harry Potter and the Goblet of Fire',
+                    style: Styles.tittleMedium20,
+                    ),
+                    Text('J.K Rowling',
+                      style: Styles.tittleMedium14,
+
+                    ),
+
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

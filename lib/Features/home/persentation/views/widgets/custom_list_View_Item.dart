@@ -10,15 +10,17 @@ class CustomListViewItem extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return AspectRatio(
       aspectRatio:2.8/4,
-      child: Container(
-        height: height*.3,
-        width: width*.25,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          image: const DecorationImage(
-              image: AssetImage(
-                AssetsData.testImage,
-              )
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: const DecorationImage(
+              fit: BoxFit.fill,
+                image: AssetImage(
+                  AssetsData.testImage,
+                )
+            ),
           ),
         ),
       ),
