@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'best_seller_list_view.dart';
 import 'book_list_view.dart';
 import 'customAppBar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -34,5 +35,7 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+
+
 
 
