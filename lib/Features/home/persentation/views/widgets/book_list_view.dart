@@ -1,6 +1,12 @@
 
 
+import 'package:bookly/Features/home/persentation/manager/featured_books_cubit/featured_books_cubit.dart';
+import 'package:bookly/Features/home/persentation/manager/featured_books_cubit/featured_books_state.dart';
+import 'package:bookly/core/widgets/custom_error_widget.dart';
+import 'package:bookly/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'custom_list_View_Item.dart';
 
@@ -11,17 +17,26 @@ class FeaturedBooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
 
-    return SizedBox(
-      height: height* .3,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context,index){
-            return const Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 2),
-              child:  CustomListViewItem(),
-            );
-
-          }),
+    return BlocBuilder<FeaturedBooksCubit,FeaturedBooksState>(
+      builder: (context,state) {
+        if(state is FeaturedBooksSuccess) {
+          return SizedBox(
+            height: height * .3,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 2),
+                    child: CustomListViewItem(),
+                  );
+                }),
+          );
+        }else if (state is FeaturedBooksFailure){
+          return CustomError(errorMessage: state.errorMessage);
+        }else {
+          return const CustomLoadingIndicator();
+        }
+        }
     );
   }
 }
