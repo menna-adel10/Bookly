@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/assets.dart';
 
 class CustomListViewItem extends StatelessWidget {
-  const CustomListViewItem({super.key});
+  const CustomListViewItem({super.key, required this.imageUrl});
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     //var height = MediaQuery.of(context).size.height;
-    //var width = MediaQuery.of(context).size.width;
+    // var width = MediaQuery.of(context).size.width;
     return AspectRatio(
       aspectRatio:2.8/4,
       child: Padding(
@@ -15,10 +17,10 @@ class CustomListViewItem extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            image: const DecorationImage(
+            image:  DecorationImage(
               fit: BoxFit.fill,
-                image: AssetImage(
-                  AssetsData.testImage,
+                image: NetworkImage(
+                    imageUrl,
                 )
             ),
           ),
