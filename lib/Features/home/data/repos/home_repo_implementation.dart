@@ -27,12 +27,10 @@ class HomeRepoImp implements HomeRepo {
       }
       return left(ServerFailure(e.toString()));
     }
-
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async{
-
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiServices.get(
           endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
@@ -48,6 +46,5 @@ class HomeRepoImp implements HomeRepo {
       }
       return left(ServerFailure(e.toString()));
     }
-
   }
 }
