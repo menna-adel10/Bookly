@@ -7,14 +7,14 @@ class BookDetailsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-
           onPressed: (){},
           iconSize: 35,
           icon: const Icon(Icons.close),
         ),
-        const Spacer(),
+        //const Spacer(),
         IconButton(
           onPressed: () {},
           icon: const Icon(FontAwesomeIcons.shoppingCart),

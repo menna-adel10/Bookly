@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'book_details_appBar.dart';
+import 'custom_book_item.dart';
 
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -10,11 +10,19 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+
+    var width = MediaQuery.of(context).size.width;
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
-          BookDetailsAppBar(),
+          const BookDetailsAppBar(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width*.15),
+            child: const BookImage(),
+          ),
+
+
         ],
       ),
     );
