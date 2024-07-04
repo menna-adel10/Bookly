@@ -20,5 +20,4 @@ Epub copyWith({  bool? isAvailable,
     map['isAvailable'] = _isAvailable;
     return map;
   }
-
 }

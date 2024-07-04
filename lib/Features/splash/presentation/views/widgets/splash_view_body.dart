@@ -1,7 +1,6 @@
-import 'package:bookly/Features/home/persentation/views/home_view.dart';
-import 'package:bookly/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -19,14 +18,16 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void initState() {
     super.initState();
     animationControllerBuilder();
-//page tzhar f 2 seconds and then navigate to homepage
+     //page tzhar f 2 seconds and then navigate to homepage
     navigateToHome();
   }
 
   void navigateToHome() {
-     Future.delayed(const Duration(seconds: 2), (){
-      Get.to(()=> const
-      HomeView(), transition: Transition.fade, duration: kTransitionDuration);
+     Future.delayed(
+         const Duration(seconds: 2), (){
+           GoRouter.of(context).push('/homeView');
+      //Get.to(()=> const
+      //HomeView(), transition: Transition.fade, duration: kTransitionDuration);
     });
   }
 
@@ -53,10 +54,12 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text('B O O K L Y',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+        const Center(
+          child: Text('B O O K L Y',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         buildAnimatedBuilder(),
