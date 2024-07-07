@@ -19,3 +19,6 @@ class BestSellerListView extends StatelessWidget {
   }
 }
 
+
+
+

@@ -2,7 +2,7 @@ import 'package:bookly/Features/home/persentation/views/widgets/book_details_vie
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart.';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
@@ -12,10 +12,8 @@ class BookDetailsView extends StatelessWidget {
     return const SafeArea(
       child: Scaffold(
          body: SafeArea(child: BookDetailsViewBody()),
-
       ),
     );
-
   }
 }
 

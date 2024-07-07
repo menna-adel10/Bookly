@@ -6,37 +6,41 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'custom_book_item.dart';
+
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery
+        .of(context)
+        .size
+        .height;
 
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
         builder: (context, state) {
-      if (state is FeaturedBooksSuccess) {
-        return SizedBox(
-          height: height * .3,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2),
-                 /* child: CustomListViewItem(
+          if (state is FeaturedBooksSuccess) {
+            return SizedBox(
+              height: height * .3,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 2),
+                     /* child: CustomListViewItem(
                     imageUrl:
                         state.books[index].volumeInfo.imageLinks.thumbnail,
                   ),*/
-                );
-              }),
-        );
-      } else if (state is FeaturedBooksFailure) {
-        return CustomError(errorMessage: state.errorMessage);
-      } else {
-        return const CustomLoadingIndicator();
-      }
-    });
+                    );
+                  }),
+            );
+          } else if (state is FeaturedBooksFailure) {
+            return CustomError(errorMessage: state.errorMessage);
+          } else {
+            return const CustomLoadingIndicator();
+          }
+        });
   }
+
 }

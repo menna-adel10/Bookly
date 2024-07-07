@@ -25,4 +25,17 @@ abstract class Styles
     //fontFamily: Font
     color: Colors.grey,
   );
+  static const tittleMedium17 = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.bold,
+    //fontFamily: Font
+    color: Colors.white,
+  );
+
+  static const tittleMedium30 = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    //fontFamily: ''
+
+  );
 }

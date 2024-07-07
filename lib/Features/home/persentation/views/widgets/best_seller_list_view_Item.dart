@@ -84,3 +84,4 @@ class BestSellerItem extends StatelessWidget {
   }
 }
 
+
