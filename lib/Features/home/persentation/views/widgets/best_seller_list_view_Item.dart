@@ -38,7 +38,7 @@ class BestSellerItem extends StatelessWidget {
                   SizedBox(
                     width: width * 0.5,
                     child:  Text(
-                      bookModel.volumeInfo.title!,
+                      bookModel.volumeInfo.title,
                       maxLines: 2,
                       //to make long paragraph with points
                       overflow: TextOverflow.ellipsis,
