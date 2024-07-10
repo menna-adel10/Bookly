@@ -1,17 +1,21 @@
+import 'package:bookly/Features/home/data/models/BookModel.dart';
+import 'package:bookly/Features/home/persentation/views/widgets/custom_book_item.dart';
 import 'package:bookly/core/utils/appRouter.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 import 'BookRatings.dart';
 
+
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+  const BestSellerItem({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-//gesture detector to navigate from here
+   //gesture detector to navigate from here
 
     return GestureDetector(
       onTap :(){
@@ -22,20 +26,8 @@ class BestSellerItem extends StatelessWidget {
         height: 120,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.8 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      AssetsData.testImage,
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
+            BookImage(imageUrl: bookModel.volumeInfo.imageLinks.thumbnail),
+            
             const SizedBox(
               width: 20,
             ),
@@ -45,18 +37,19 @@ class BestSellerItem extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: width * 0.5,
-                    child: const Text(
-                      'Harry Potter and the Goblet of Fire',
+                    child:  Text(
+                      bookModel.volumeInfo.title!,
+                      maxLines: 2,
                       //to make long paragraph with points
-                      //overflow: TextOverflow.ellipsis
+                      overflow: TextOverflow.ellipsis,
                       style: Styles.tittleMedium20,
                     ),
                   ),
                   const SizedBox(
                     height: 3,
                   ),
-                  const Text(
-                    'J.K Rowling',
+                   Text(
+                    bookModel.volumeInfo.authors[0],
                     style: Styles.tittleMedium14,
                   ),
                   const SizedBox(
@@ -64,13 +57,16 @@ class BestSellerItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text('19.99',
+                      Text('Free',
                         style: Styles.tittleMedium20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
-                      const BookRatings(),
+                       BookRatings(
+                        rating: bookModel.volumeInfo.maturityRating,
+                        //count: bookModel.volumeInfo.ratingCount,
+                      ),
 
                     ],
                   ),

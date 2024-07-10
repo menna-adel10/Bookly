@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart.';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Features/home/persentation/manager/newest_books/newest_books_cubit.dart';
 import 'core/utils/appRouter.dart';
 
 void main() {
@@ -25,6 +26,11 @@ class BooklyApp extends StatelessWidget {
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImp>(),
           )..fetchFeaturedBooks(),
+        ),
+        BlocProvider(
+          create: (context) => NewestBooksCubit(
+            getIt.get<HomeRepoImp>(),
+          )..fetchNewestBooks(),
         ),
       ],
       child: MaterialApp.router(
