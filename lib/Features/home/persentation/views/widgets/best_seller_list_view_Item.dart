@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/styles.dart';
 import 'BookRatings.dart';
 
-
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key, required this.bookModel});
 
@@ -19,7 +18,8 @@ class BestSellerItem extends StatelessWidget {
 
     return GestureDetector(
       onTap :(){
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(
+            AppRouter.kBookDetailsView, extra: bookModel);
       },
 
       child: SizedBox(
