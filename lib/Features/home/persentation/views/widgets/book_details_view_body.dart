@@ -1,3 +1,4 @@
+import 'package:bookly/Features/home/data/models/BookModel.dart';
 import 'package:flutter/material.dart';
 import 'package:bookly/Features/home/persentation/views/widgets/similar_book_list_view.dart';
 import 'package:bookly/core/utils/styles.dart';
@@ -6,7 +7,9 @@ import 'book_details_image_section.dart';
 import 'books_action.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  const BookDetailsViewBody({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,9 @@ class BookDetailsViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const BookDetailsAppBar(),
-                const BookDetailsSection(),
+                 BookDetailsSection(
+                  book:  bookModel,
+                ),
                 const SizedBox(height: 37,),
                 const BookAction(),
 

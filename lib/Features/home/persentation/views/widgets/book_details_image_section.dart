@@ -1,3 +1,4 @@
+import 'package:bookly/Features/home/data/models/BookModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -5,8 +6,9 @@ import 'BookRatings.dart';
 import 'custom_book_item.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.book});
 
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
