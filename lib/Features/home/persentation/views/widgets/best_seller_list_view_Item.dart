@@ -14,7 +14,7 @@ class BestSellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-   //gesture detector to navigate from here
+
 
     return GestureDetector(
       onTap :(){
