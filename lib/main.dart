@@ -8,22 +8,22 @@ import 'package:flutter/material.dart.';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'Features/home/persentation/manager/newest_books/newest_books_cubit.dart';
 import 'core/utils/appRouter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookEntityAdapter());
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
   setUp();
   runApp(const BooklyApp());
-  Hive.registerAdapter(BookEntityAdapter());
-  Hive.openBox(kFeaturedBox);
 }
-
-
 
 class BooklyApp extends StatelessWidget {
   const BooklyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -41,7 +41,7 @@ class BooklyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
-              debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: kPrimaryColor,
           textTheme: GoogleFonts.montserratAlternatesTextTheme(
@@ -52,4 +52,3 @@ class BooklyApp extends StatelessWidget {
     );
   }
 }
-
