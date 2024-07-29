@@ -2,7 +2,6 @@ import 'package:bookly/Features/home/data/data_sources/home_local_data_source.da
 import 'package:bookly/Features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
-
 import '../../domain/entities/HomeRepo.dart';
 import '../../domain/entities/book_entity.dart';
 
@@ -10,47 +9,40 @@ class HomeRepoImp implements HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
   final HomeLocalDataSource homeLocalDataSource;
 
-  HomeRepoImp( this.homeLocalDataSource, this.homeRemoteDataSource);
-
+  HomeRepoImp(this.homeLocalDataSource, this.homeRemoteDataSource);
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks()async {
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
     try {
       var bookList = await homeLocalDataSource.fetchFeaturedBooks();
-      if(bookList.isNotEmpty){
+      if (bookList.isNotEmpty) {
         return right(bookList);
       }
       var books = await homeRemoteDataSource.fetchFeaturedBooks();
-      
-      return right(books);
 
-    }catch (e) {
+      return right(books);
+    } catch (e) {
       return left(ServerFailure(e.toString()));
     }
-
-
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks()async {
-
+  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
     try {
-      var bookList = await homeLocalDataSource.fetchNewestBooks();
-      if(bookList.isNotEmpty){
-        return right(bookList);
+      List<BookEntity>books;
+      books = await homeLocalDataSource.fetchNewestBooks();
+      if (books.isNotEmpty) {
+        return right(books);
       }
-      var books = await homeRemoteDataSource.fetchNewestBooks();
+      books = await homeRemoteDataSource.fetchNewestBooks();
 
       return right(books);
-
-    }catch (e) {
+    } catch (e) {
       return left(ServerFailure(e.toString()));
     }
-
   }
-
 }
- /* final ApiServices apiServices;
+/* final ApiServices apiServices;
 
   HomeRepoImp(this.apiServices);
 
@@ -110,6 +102,6 @@ class HomeRepoImp implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
 }
 */
