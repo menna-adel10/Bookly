@@ -1,9 +1,11 @@
+import 'package:bookly/Features/home/domain/entities/book_entity.dart';
+
 import 'VolumeInfo.dart';
 import 'SaleInfo.dart';
 import 'AccessInfo.dart';
 import 'SearchInfo.dart';
 
-class BookModel {
+class BookModel extends BookEntity {
   BookModel({
     required String kind,
     required String id,
@@ -13,7 +15,14 @@ class BookModel {
     SaleInfo? saleInfo,
     AccessInfo? accessInfo,
     SearchInfo? searchInfo,
-  }) {
+  }) : super(
+    bookId: id,
+    image: volumeInfo.imageLinks.thumbnail,
+    title: volumeInfo.title,
+    authorName: volumeInfo.authors.isNotEmpty ? volumeInfo.authors.first : '',
+    price: 0.0,
+    rating: 0.0,
+  ) {
     _kind = kind;
     _id = id;
     _etag = etag;
@@ -24,7 +33,14 @@ class BookModel {
     _searchInfo = searchInfo;
   }
 
-  BookModel.fromJson(dynamic json) {
+  BookModel.fromJson(Map<String, dynamic> json) : super(
+    bookId: json['id'],
+    image: VolumeInfo.fromJson(json['volumeInfo']).imageLinks.thumbnail,
+    title: VolumeInfo.fromJson(json['volumeInfo']).title,
+    authorName: VolumeInfo.fromJson(json['volumeInfo']).authors.isNotEmpty ? VolumeInfo.fromJson(json['volumeInfo']).authors.first : '',
+    price: 0.0, 
+    rating: 0.0,
+  ) {
     _kind = json['kind'];
     _id = json['id'];
     _etag = json['etag'];
@@ -82,13 +98,13 @@ class BookModel {
     map['selfLink'] = _selfLink;
     map['volumeInfo'] = _volumeInfo!.toJson();
     if (_saleInfo != null) {
-      map['saleInfo'] = _saleInfo?.toJson();
+      map['saleInfo'] = _saleInfo!.toJson();
     }
     if (_accessInfo != null) {
-      map['accessInfo'] = _accessInfo?.toJson();
+      map['accessInfo'] = _accessInfo!.toJson();
     }
     if (_searchInfo != null) {
-      map['searchInfo'] = _searchInfo?.toJson();
+      map['searchInfo'] = _searchInfo!.toJson();
     }
     return map;
   }
