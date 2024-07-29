@@ -1,12 +1,56 @@
-import 'package:bookly/Features/home/data/models/BookModel.dart';
-import 'package:bookly/Features/home/data/repos/home_repo.dart';
+import 'package:bookly/Features/home/data/data_sources/home_local_data_source.dart';
+import 'package:bookly/Features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly/core/errors/failures.dart';
-import 'package:bookly/core/utils/api_services.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
+
+import '../../domain/entities/HomeRepo.dart';
+import '../../domain/entities/book_entity.dart';
 
 class HomeRepoImp implements HomeRepo {
-  final ApiServices apiServices;
+  final HomeRemoteDataSource homeRemoteDataSource;
+  final HomeLocalDataSource homeLocalDataSource;
+
+  HomeRepoImp( this.homeLocalDataSource, this.homeRemoteDataSource);
+
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks()async {
+    try {
+      var bookList = await homeLocalDataSource.fetchFeaturedBooks();
+      if(bookList.isNotEmpty){
+        return right(bookList);
+      }
+      var books = await homeRemoteDataSource.fetchFeaturedBooks();
+      
+      return right(books);
+
+    }catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+
+
+  }
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks()async {
+
+    try {
+      var bookList = await homeLocalDataSource.fetchNewestBooks();
+      if(bookList.isNotEmpty){
+        return right(bookList);
+      }
+      var books = await homeRemoteDataSource.fetchNewestBooks();
+
+      return right(books);
+
+    }catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+
+  }
+
+}
+ /* final ApiServices apiServices;
 
   HomeRepoImp(this.apiServices);
 
@@ -68,3 +112,4 @@ class HomeRepoImp implements HomeRepo {
   }
   
 }
+*/
