@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 
 class BookImage extends StatelessWidget {
-  const BookImage({super.key, required this.imageUrl});
+  const BookImage({super.key, required this.image});
 
-  final String imageUrl;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class BookImage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CachedNetworkImage(
-          imageUrl: imageUrl,
+          imageUrl: image,
         ),
       ),
     );
