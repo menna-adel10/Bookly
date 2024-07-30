@@ -6,7 +6,7 @@ import '../../domain/entities/HomeRepo.dart';
 import '../../domain/entities/book_entity.dart';
 
 class HomeRepoImp implements HomeRepo {
-  final HomeRemoteDataSource homeRemoteDataSource;
+  final  HomeRemoteDataSource homeRemoteDataSource;
   final HomeLocalDataSource homeLocalDataSource;
 
   HomeRepoImp(this.homeLocalDataSource, this.homeRemoteDataSource);
