@@ -1,3 +1,5 @@
+import 'package:bookly/Features/home/domain/entities/book_entity.dart';
+
 import '../../../data/models/BookModel.dart';
 
 abstract class NewestBooksState {
@@ -15,7 +17,7 @@ class NewestBooksFailure extends NewestBooksState {
 }
 
 class NewestBooksSuccess extends NewestBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
   const NewestBooksSuccess(this.books);
 
 }
