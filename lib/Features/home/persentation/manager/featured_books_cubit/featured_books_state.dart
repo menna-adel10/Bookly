@@ -1,3 +1,5 @@
+import 'package:bookly/Features/home/domain/entities/book_entity.dart';
+
 import '../../../data/models/BookModel.dart';
 
 abstract class FeaturedBooksState {}
@@ -12,6 +14,6 @@ class FeaturedBooksFailure extends FeaturedBooksState {
 }
 
 class FeaturedBooksSuccess extends FeaturedBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
   FeaturedBooksSuccess(this.books);
 }
