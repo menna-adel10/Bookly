@@ -1,6 +1,5 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
 
-import '../../../data/models/BookModel.dart';
 
 abstract class FeaturedBooksState {}
 
