@@ -18,7 +18,7 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.2),
           child: const BookImage(
-            imageUrl: 'https://www.freepik.com/free-photo/yellow-mug-books_1455012.htm#query=book&position=0&from_view=keyword&track=ais_hybrid&uuid=e6a5d1d3-451b-4b0a-aea9-6f547882c297',
+            image: 'https://www.freepik.com/free-photo/yellow-mug-books_1455012.htm#query=book&position=0&from_view=keyword&track=ais_hybrid&uuid=e6a5d1d3-451b-4b0a-aea9-6f547882c297',
           ),
         ),
         const SizedBox(height: 8,),
