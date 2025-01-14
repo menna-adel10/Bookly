@@ -1,7 +1,6 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'best_seller_list_view.dart';
 import 'customAppBar.dart';
 import 'featured_book_list_bloc_builder.dart';
 
@@ -33,12 +32,12 @@ class HomeViewBody extends StatelessWidget {
             ],
           )
         ),
-        SliverToBoxAdapter(
+       /* SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: BestSellerListView(),
           ),
-        ),
+        ),*/
 
       ],
     );

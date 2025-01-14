@@ -18,6 +18,7 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
   late ScrollController _scrollController = ScrollController();
 
   var nextPage = 1;
+  var isLoading = false;
 
   @override
   void initState() {
@@ -27,11 +28,14 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
     _scrollController.addListener(_scrollListener);
   }
 
-  void _scrollListener() {
+  void _scrollListener() async {
     if (_scrollController.position.pixels >=
-        0.7 * _scrollController.position.maxScrollExtent) {
+        0.7 * _scrollController.position.maxScrollExtent) ;
+    if(!isLoading){
+      isLoading = true;
       BlocProvider.of<FeaturedBooksCubit>(context)
           .fetchFeaturedBooks(pageNumber: nextPage++);
+      isLoading = false;
     }
   }
 

@@ -18,7 +18,4 @@ class FetchFeaturedBooksUseCase extends UseCase<List<BookEntity>, int>{
 }
 
 
-
-
-
 class NoParam{}
